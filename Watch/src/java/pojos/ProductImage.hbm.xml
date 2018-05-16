@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018 2:27:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.ProductImage" table="ProductImage" catalog="watches" optimistic-lock="version">
+        <id name="idProductImage" type="java.lang.Integer">
+            <column name="idProductImage" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="pojos.Product" fetch="select">
+            <column name="Product_idProduct" not-null="true" />
+        </many-to-one>
+        <property name="imageOne" type="string">
+            <column name="ImageOne" length="45" />
+        </property>
+        <property name="imageTwo" type="string">
+            <column name="ImageTwo" length="45" />
+        </property>
+        <property name="imageThree" type="string">
+            <column name="ImageThree" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018 2:27:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Grn" table="GRN" catalog="watches" optimistic-lock="version">
+        <id name="idGrn" type="java.lang.Integer">
+            <column name="idGRN" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="pojos.Product" fetch="select">
+            <column name="Product_idProduct" not-null="true" />
+        </many-to-one>
+        <property name="buyPrice" type="java.lang.Double">
+            <column name="BuyPrice" precision="22" scale="0" />
+        </property>
+        <property name="selPrice" type="java.lang.Double">
+            <column name="SelPrice" precision="22" scale="0" />
+        </property>
+        <property name="qty" type="java.lang.Double">
+            <column name="Qty" precision="22" scale="0" />
+        </property>
+        <property name="addedDate" type="date">
+            <column name="AddedDate" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

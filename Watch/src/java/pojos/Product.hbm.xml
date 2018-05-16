@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018 2:27:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Product" table="Product" catalog="watches" optimistic-lock="version">
+        <id name="idProduct" type="java.lang.Integer">
+            <column name="idProduct" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="pojos.Category" fetch="select">
+            <column name="Category_idCategory" not-null="true" />
+        </many-to-one>
+        <property name="productCode" type="string">
+            <column name="ProductCode" length="45" />
+        </property>
+        <property name="name" type="string">
+            <column name="Name" length="45" />
+        </property>
+        <property name="movement" type="string">
+            <column name="Movement" length="45" />
+        </property>
+        <property name="display" type="string">
+            <column name="Display" length="45" />
+        </property>
+        <property name="style" type="string">
+            <column name="Style" length="45" />
+        </property>
+        <property name="features" type="string">
+            <column name="Features" length="45" />
+        </property>
+        <property name="caseMaterial" type="string">
+            <column name="CaseMaterial" length="45" />
+        </property>
+        <property name="caseDiameter" type="string">
+            <column name="CaseDiameter" length="45" />
+        </property>
+        <property name="caseThickness" type="string">
+            <column name="CaseThickness" length="45" />
+        </property>
+        <property name="bandMaterial" type="string">
+            <column name="BandMaterial" length="45" />
+        </property>
+        <property name="bandLength" type="string">
+            <column name="BandLength" length="45" />
+        </property>
+        <property name="bandWidth" type="string">
+            <column name="BandWidth" length="45" />
+        </property>
+        <set name="carts" table="Cart" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Product_idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Cart" />
+        </set>
+        <set name="productImages" table="ProductImage" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Product_idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.ProductImage" />
+        </set>
+        <set name="checkoutHasProducts" table="Checkout_has_Product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Product_idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.CheckoutHasProduct" />
+        </set>
+        <set name="grns" table="GRN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Product_idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Grn" />
+        </set>
+        <set name="stocks" table="Stock" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Product_idProduct" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Stock" />
+        </set>
+    </class>
+</hibernate-mapping>

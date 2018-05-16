@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 20, 2018 2:27:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.ShippingAddress" table="ShippingAddress" catalog="watches" optimistic-lock="version">
+        <id name="idShippingAddress" type="java.lang.Integer">
+            <column name="idShippingAddress" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="homeTown" class="pojos.HomeTown" fetch="select">
+            <column name="HomeTown_idHomeTown" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="pojos.User" fetch="select">
+            <column name="User_idUser" not-null="true" />
+        </many-to-one>
+        <property name="address" type="string">
+            <column name="Address" length="45" />
+        </property>
+        <set name="checkouts" table="Checkout" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ShippingAddress_idShippingAddress" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Checkout" />
+        </set>
+    </class>
+</hibernate-mapping>
